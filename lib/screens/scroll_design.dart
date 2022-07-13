@@ -97,7 +97,10 @@ class Page2 extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Text(
               'Bienvenido',
-              style: TextStyle(color: Colors.white, fontSize: 30),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
             ),
           ),
           style: TextButton.styleFrom(
