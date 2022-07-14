@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class CardTable extends StatelessWidget {
@@ -46,7 +48,7 @@ class CardTable extends StatelessWidget {
         TableRow(
           children: [
             _SigleCard(
-                color: Colors.white, icon: Icons.work_history, text: 'Trabajo'),
+                color: Colors.blue, icon: Icons.work_history, text: 'Trabajo'),
             _SigleCard(
                 color: Colors.amber,
                 icon: Icons.home_max_outlined,
@@ -71,29 +73,39 @@ class _SigleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(15),
-      height: 180,
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: this.color,
-            child: Icon(
-              this.icon,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            //margin: EdgeInsets.all(15),
+            height: 180,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(62, 66, 107, 0.7),
+              borderRadius: BorderRadius.circular(20),
             ),
-            radius: 30,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: this.color,
+                  child: Icon(
+                    this.icon,
+                    color: Colors.white,
+                  ),
+                  radius: 30,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  this.text,
+                  style: TextStyle(color: this.color, fontSize: 18),
+                )
+              ],
+            ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            this.text,
-            style: TextStyle(color: this.color, fontSize: 18),
-          )
-        ],
+        ),
       ),
     );
   }
